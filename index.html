@@ -26,7 +26,7 @@
     const params = new URLSearchParams(formData);
 
     try {
-      const response = await fetch('YOUR_WEB_APP_URL', {  // Replace with your Apps Script URL
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwniM9Cc4-AbaQ0tspkiJLI5ciVoUXAFSgYvi2dYcPQ8hnG8Rj_7e8FNuKHtEXrzZY/exec', {  // Replace with your Apps Script URL
         method: 'POST',
         body: params
       });
@@ -43,4 +43,5 @@
   });
   </script>
 </body>
+
 </html>
