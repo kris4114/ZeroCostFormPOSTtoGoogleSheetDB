@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Sign Up</h1>
+    <form id="signupForm">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p id="status"></p>
+  </div>
+
+  <script>
+  const form = document.getElementById('signupForm');
+  const status = document.getElementById('status');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const formData = new FormData(form);
+    const params = new URLSearchParams(formData);
+
+    try {
+      const response = await fetch('YOUR_WEB_APP_URL', {  // Replace with your Apps Script URL
+        method: 'POST',
+        body: params
+      });
+      if(response.ok){
+        status.textContent = '✅ Signed up successfully!';
+        form.reset();
+      } else {
+        status.textContent = '⚠️ Something went wrong.';
+      }
+    } catch(err){
+      console.error(err);
+      status.textContent = '⚠️ Submission failed.';
+    }
+  });
+  </script>
+</body>
+</html>
